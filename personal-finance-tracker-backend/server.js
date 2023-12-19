@@ -1,5 +1,4 @@
 const express = require('express');
-const connectDB = require('./db'); // Update the path as needed
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -17,7 +16,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB Connection
-const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
@@ -28,7 +26,6 @@ const connectDB = async () => {
     console.error('Error connecting to MongoDB:', error.message);
   }
 };
-connectDB(); // Assuming this function sets up the MongoDB connection
 
 // Define mongoose models and schemas
 const User = mongoose.model('User', {
